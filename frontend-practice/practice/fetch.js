@@ -14,29 +14,32 @@ function userInfo(username){
 
             const result = Promise.all(
                 [getUserPostByUserId(userId), getUserCommentsByUserId(userId), getUserTodosByUserId(userId)]
-            ).then(()=>{
-                console.log(user)
+            ).then(([posts, comments, todos])=>{
+                user.posts = posts;
+                user.comments = comments;
+                user.todos = todos;
             })
         })
+    console.log(user);
 }
 function getUserPostByUserId(userId){
-    fetch(`${baseURL}/users/${userId}/posts`)
+    return fetch(`${baseURL}/users/${userId}/posts`)
         .then((response)=>response.json())
         .then((data)=>{
-            user.posts = data;
+            return data;
         })
 }
 function getUserCommentsByUserId(userId){
-    fetch(`${baseURL}/users/${userId}/comments`)
+    return fetch(`${baseURL}/users/${userId}/comments`)
     .then((response)=>response.json())
     .then((data)=>{
-        user.comments = data;
+        return data;
     })
 }
 function getUserTodosByUserId(userId){
-    fetch(`${baseURL}/users/${userId}/todos`)
+    return fetch(`${baseURL}/users/${userId}/todos`)
         .then((response)=>response.json())
         .then((data)=>{
-            user.todos = data;
+            return data;
         })
 }
