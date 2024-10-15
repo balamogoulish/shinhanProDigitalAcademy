@@ -1,5 +1,3 @@
-//웹에서 데이터를 가져오거나 보내기 위한 JS 내장 함수
-
 //1. function 만들기
 // - username을 입력받아서 다음 정보를 조회하는 함수
 // - user의 정보, 쓴 게시글, 쓴 댓글, todo를 하나의 객체로 만들어 출력
@@ -11,7 +9,6 @@ function userInfo(username){
         .then((data)=>{
             const userId = data[0].id;
             user.userInfo = data[0];
-
             const result = Promise.all(
                 [getUserPostByUserId(userId), getUserCommentsByUserId(userId), getUserTodosByUserId(userId)]
             ).then(([posts, comments, todos])=>{
