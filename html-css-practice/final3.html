@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(243, 243, 243);
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            margin: 0;
+        }
+        .container{
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 6px 6px 6px rgb(221, 221, 221);
+            padding-top: 50px;
+            padding-bottom: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: 700px;
+            margin: auto;
+            margin-top: 200px;
+            display: flexbox;
+            text-align: center;
+            justify-items: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        input{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid lightgray;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        #btn{
+            background-color: rgb(60, 60, 60);
+            color: white;
+            width: 100%;
+            padding: 10px;
+            transition: background-color 0.5s;
+        }
+        #btn:hover{
+            background-color: rgb(0, 0, 0);
+        }
+        p{
+            margin: 0;
+            text-align: left;
+        }
+        @media (max-width: 600px) {
+            .container{
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form>
+            <p>Full Name</p>
+            <input type="text" name="uname" placeholder="Enter your name" required/>
+            <p>Email</p>
+            <input type="email" name="uemail" placeholder="Enter your email" required/>
+            <p>Password</p>
+            <input type="password" name="upw" placeholder="Enter your password" required/>
+            <input id="btn" type="submit" value="Sign Up">
+        </form>
+    </div>
+</body>
+</html>
