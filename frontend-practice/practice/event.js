@@ -1,15 +1,15 @@
 const uname_input = document.getElementById('username');
-const cancel_btn = document.getElementById('cancel-btn');        
+const cancel_btn = document.getElementById('cancel-btn'); 
+const submit_btn = document.getElementById('submit-btn');       
 let isCanceled = false;
 
-uname_input.addEventListener('change',async (event)=>{
+submit_btn.addEventListener('click',async (event)=>{
     isCanceled = false;
     cancel_btn.style.display='block'
     setTimeout(()=>{
         cancel_btn.style.display="none"
         if (!isCanceled){
-            console.log('3초')
-            getUserByUsername(event.target.value);
+            getUserByUsername(uname_input.value);
         }
     }, 3000)
 })
