@@ -1,24 +1,22 @@
 const uname_input = document.getElementById('username');
 const cancel_btn = document.getElementById('cancel-btn');        
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 let isCanceled = false;
 
 uname_input.addEventListener('change',async (event)=>{
     isCanceled = false;
-    const uname = event.target.value;
     cancel_btn.style.display='block'
-    await delay(3000);
-    cancel_btn.style.display="none"
-    if (!isCanceled){
-        console.log(isCanceled)
-        getUserByUsername(uname);
-    }
+    setTimeout(()=>{
+        cancel_btn.style.display="none"
+        if (!isCanceled){
+            console.log('3초')
+            getUserByUsername(event.target.value);
+        }
+    }, 3000)
 })
 cancel_btn.addEventListener('click', (event)=>{
-    console.log('취소')
+    console.log('취소!')
     isCanceled = true;
 });
-
 
 //user 정보 가져오기
 const baseURL = 'https://jsonplaceholder.typicode.com';
