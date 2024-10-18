@@ -14,20 +14,22 @@ async function main() {
     await browser.close(); //browser 닫기
 
     const $ = cheerio.load(content);
-    const items = $('.TableLayout_container__1_Ap4').find('.HomeHorizontalCard_info__2MokD').map((idx, elem)=>{
+    const items = $('.TableLayout_container__1_Ap4').find('a').map((idx, elem)=>{
         const name = $(elem).find('.Title_title__3kHxQ').text();
         const makerName = $(elem).find('.MakerWrapper_makerName__131I-').text();
         const achievePercent = $(elem).find('.InfoStringWrapper_infoString__2HtEW HomeHorizontalCard_infoStringWrapper__3e4Mw').text();
         const rewardBadge = $(elem).find('.LabelBadge_badge__O5qDI').text().split('+');
         const cost = rewardBadge[0];
         const leftDate = rewardBadge[1];
+        const imageUrl = $(elem).find('.ThumbnailImage_img__3D7mj').attr('src')
 
         return {
             name,
             makerName,
             achievePercent,
             cost,
-            leftDate
+            leftDate,
+            imageUrl
         }
     }).get();
     console.log(items);

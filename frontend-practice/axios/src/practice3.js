@@ -12,6 +12,7 @@ async function bringNewsDetail(){
     const detailRes = await axios.get(detailUrl);
     const $detail = cheerio.load(detailRes.data);
     writeNewsDetailFile($detail.html());
+    console.log(typeof $detail.html())
 }
 function writeNewsDetailFile(result){
     const data = result
