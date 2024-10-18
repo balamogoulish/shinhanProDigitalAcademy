@@ -14,8 +14,8 @@ async function bringNewsDetail(){
     writeNewsDetailFile($detail.html());
 }
 function writeNewsDetailFile(result){
-    const data = JSON.stringify(result);
-    fs.writeFile('newsDetailFile', data, (err)=>{
+    const data = result
+    fs.writeFile('newsDetailFile.html', data, (err)=>{
         if(err){
             console.error(err);
         }
