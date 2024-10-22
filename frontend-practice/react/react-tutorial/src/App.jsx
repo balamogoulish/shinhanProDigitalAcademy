@@ -1,13 +1,30 @@
-import {HelloWorld2, HelloWorld3, CaptionImage} from './components/HelloWorld'
-import MyButton1, {MyButton2} from './components/MyButton'
-import BlinkComponent from './components/BlinkComponent'
-import CountComponent from './components/CountComponent'
-import CBlinkComponent from './components/CBlinkComponent'
+/* eslint-disable prettier/prettier */
+import { useState } from 'react';
+
+import { HelloWorld2, HelloWorld3, CaptionImage } from './components/HelloWorld';
+import MyButton1, { MyButton2 } from './components/MyButton';
+import BlinkComponent from './components/BlinkComponent';
+import CountComponent from './components/CountComponent';
+import CBlinkComponent from './components/CBlinkComponent';
+import OnChangeInput, { ForbiddenWords, SumOfNums } from './components/OnChangeInput';
+import { BringUserInfo, OnAndOff, StopWatch, Timer } from './components/AdditionalPractice';
 
 function App() {
-  return(
+  const [visible, setVisible] = useState(true);
+  return (
     <>
+      {/* <div>
+        <OnChangeInput/>
+        <SumOfNums/>
+        <ForbiddenWords />
+      </div> */}
       <div>
+        <OnAndOff />
+        <BringUserInfo />
+        <StopWatch />
+        <Timer />
+      </div>
+      {/* <div>
         <HelloWorld3/>
         <HelloWorld2/>
         <CaptionImage
@@ -32,14 +49,14 @@ function App() {
         />
       </div>
       <div>
-        {/* <BlinkComponent text='This is Blink Component'/> */}
+        <BlinkComponent text='This is Blink Component'/>
         <CountComponent />
       </div>
       <div>
         <CBlinkComponent text='This is for CreateRef'/>
-      </div>
+      </div> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
