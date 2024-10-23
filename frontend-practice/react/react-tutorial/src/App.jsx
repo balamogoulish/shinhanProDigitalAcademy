@@ -5,11 +5,19 @@ import ThemeButton from './components2/ThemeButton';
 import { ThemeProvider } from './contexts/themeContext';
 import Button from 'react-bootstrap/Button';
 import ToDoApp from './components/ToDoApp';
+import TodoInput from './componentsTodo/ToDoApp1/TodoInput';
+import Todo from './componentsTodo/ToDoApp1/Todo';
 
 function App() {
   return (
     <>
-      <ToDoApp />
+      {/* <Button>버튼</Button>
+      <ThemeProvider>
+        <ThemeButton />
+        <MyPage />
+      </ThemeProvider> */}
+      {/* <ToDoApp /> */}
+      <Todo />
     </>
   );
 }

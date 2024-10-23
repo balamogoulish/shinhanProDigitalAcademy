@@ -1,6 +1,7 @@
-export default function TodoInput() {
+import { useState } from 'react';
+
+export default function TodoInput(props) {
   const [input, setInput] = useState('');
-  const [inputArr, setInputArr] = useState([]);
   return (
     <div>
       <input
@@ -9,9 +10,8 @@ export default function TodoInput() {
         }}
       />
       <button
-        onClick={() => {
-          setInputArr([...inputArr, { text: input, color: color }]);
-          console.log(inputArr);
+        onClick={(e) => {
+          props.addTodo(input);
         }}
       >
         입력
