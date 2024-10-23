@@ -1,13 +1,14 @@
-/* eslint-disable prettier/prettier */
-import { useState } from 'react';
-
-import UserDetail from './components/UserDetail';
+import MyPage from './components2/MyPage';
+import ThemeButton from './components2/ThemeButton';
+import { ThemeProvider } from './contexts/themeContext';
 
 function App() {
-  const [visible, setVisible] = useState(true);
   return (
     <>
-      <UserDetail />
+      <ThemeProvider>
+        <ThemeButton />
+        <MyPage />
+      </ThemeProvider>
     </>
   );
 }
