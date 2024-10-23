@@ -5,6 +5,8 @@ export default function ToDoApp() {
   const [input, setInput] = useState('');
   const [inputArr, setInputArr] = useState([]);
   const [color, setColor] = useState('');
+  const [newColor, setNewColor] = useState('');
+  const [colorArr, setColorArr] = useState(['red', 'white', 'blue', 'black']);
 
   useEffect(() => {
     console.log(color);
@@ -17,6 +19,7 @@ export default function ToDoApp() {
       <br />
       <div>
         <input
+          placeholder="할 일을 입력하세요"
           onChange={(e) => {
             setInput(e.target.value);
           }}
@@ -30,43 +33,37 @@ export default function ToDoApp() {
           입력
         </button>
       </div>
+      <div>
+        <input
+          type="color"
+          placeholder="추가할 색상을 입력하세요"
+          onChange={(e) => {
+            setNewColor(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            setColorArr([...colorArr, newColor]);
+            console.log(colorArr);
+          }}
+        >
+          입력
+        </button>
+      </div>
       <br />
       <div>
-        <button
-          style={{ background: 'red', border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
-          value="red"
-          onClick={(e) => {
-            setColor(e.target.value);
-          }}
-        ></button>
-        <button
-          style={{ background: 'white', border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
-          value="white"
-          onClick={(e) => {
-            setColor(e.target.value);
-          }}
-        ></button>
-        <button
-          style={{ background: 'lightgray', border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
-          value="lightgray"
-          onClick={(e) => {
-            setColor(e.target.value);
-          }}
-        ></button>
-        <button
-          style={{ background: 'blue', border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
-          value="blue"
-          onClick={(e) => {
-            setColor(e.target.value);
-          }}
-        ></button>
-        <button
-          style={{ background: 'black', border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
-          value="black"
-          onClick={(e) => {
-            setColor(e.target.value);
-          }}
-        ></button>
+        {colorArr.map((el) => {
+          return (
+            <button
+              style={{ background: el, border: 'none', width: '1em', height: '1em', borderRadius: '1.5em' }}
+              value={el}
+              key={el}
+              onClick={(e) => {
+                setColor(e.target.value);
+              }}
+            ></button>
+          );
+        })}
       </div>
       <br />
       <h2>Todo Item</h2>

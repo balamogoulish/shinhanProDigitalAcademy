@@ -9,11 +9,6 @@ import ToDoApp from './components/ToDoApp';
 function App() {
   return (
     <>
-      {/* <Button>버튼</Button>
-      <ThemeProvider>
-        <ThemeButton />
-        <MyPage />
-      </ThemeProvider> */}
       <ToDoApp />
     </>
   );
