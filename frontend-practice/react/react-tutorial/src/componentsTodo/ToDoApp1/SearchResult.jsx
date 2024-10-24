@@ -1,15 +1,14 @@
-export default function TodoList(props) {
+export default function SearchResult(props) {
     return (
         <div>
-            {props.inputArr.map((el) => {
-                let color = el.color;
+            {props.searchResultArr.map((el) => {
                 return (
                     <p
                         key={el.text}
                         style={{
                             width: '30em',
                             height: 'auto',
-                            background: color,
+                            background: el.color,
                             textAlign: 'center',
                             borderRadius: '1.5em',
                             margin: '0.5em',
