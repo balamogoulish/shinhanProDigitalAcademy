@@ -4,12 +4,15 @@ import TodoList from './Todolist';
 import { useState, useEffect } from 'react';
 import TodoSearch from './TodoSearch';
 import SearchResult from './SearchResult';
+import TodoEdit from './TodoEdit';
 
 export default function Todo() {
-    const [inputArr, setInputArr] = useState(JSON.parse(localStorage.getItem('todoArr')));
-    const [color, setColor] = useState('white');
-    const [colorArr, setColorArr] = useState(['red', 'white', 'blue', 'black']);
+    const [inputArr, setInputArr] = useState(JSON.parse(localStorage.getItem('todoArr')) || []);
+    const [color, setColor] = useState('lightgray');
+    const [colorArr, setColorArr] = useState(['red', 'lightgray', 'blue', 'black']);
     const [searchResultArr, setSearchResultArr] = useState([]);
+    const [editToggle, setEditToggle] = useState(false);
+    const [selectedId, setSelectedId] = useState(0);
     useEffect(() => {
         localStorage.setItem('todoArr', JSON.stringify(inputArr));
     }, [inputArr]);
@@ -21,12 +24,24 @@ export default function Todo() {
     };
     const doSearch = (data) => {
         let temp = [];
-        inputArr.map((el, i) => {
+        inputArr.map((el) => {
             if (el.text.includes(data) === true) {
                 temp.push(el);
             }
             setSearchResultArr(temp);
         });
+    };
+    const removeTodo = (id) => {
+        setInputArr(inputArr.filter((el) => inputArr[id] != el));
+    };
+    const editTodo = (data) => {
+        inputArr[selectedId] = { text: data, color: inputArr[selectedId].color };
+        setInputArr([...inputArr]);
+        setEditToggle((editTodo) => !editTodo);
+    };
+    const selectTodo = (id) => {
+        setSelectedId(id);
+        setEditToggle((editTodo) => !editTodo);
     };
     return (
         <div
@@ -70,8 +85,14 @@ export default function Todo() {
                             <div className="todo-title" style={{ paddingBottom: '10px' }}>
                                 <h2>Todo Item</h2>
                             </div>
-                            <TodoList inputArr={inputArr} />
+                            <TodoList inputArr={inputArr} removeTodo={removeTodo} selectTodo={selectTodo} />
                         </div>
+                        {editToggle ? (
+                            <div className="todo-edit-wrap">
+                                {/** Todo Edit */}
+                                <TodoEdit editTodo={editTodo} />
+                            </div>
+                        ) : null}
                     </div>
                 </div>
                 <div className="todo-search-wrap" style={{ textAlign: 'center' }}>
