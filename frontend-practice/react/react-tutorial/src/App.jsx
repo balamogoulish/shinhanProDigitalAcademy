@@ -1,11 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Todo from './componentsTodo/ToDoApp1/Todo';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import TodoProvider from './componentsTodo/Todo';
 
 function App() {
     return (
         <>
-            <Todo />
+            <TodoProvider />
         </>
     );
 }

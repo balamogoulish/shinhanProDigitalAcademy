@@ -3,16 +3,16 @@ import { useState } from 'react';
 export default function TodoInput(props) {
     const [input, setInput] = useState('');
     return (
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <input
-                style={{ border: 'none', backgroundColor: props.color, padding: '0.5em' }}
+                style={{ height: '30px', border: 'none', backgroundColor: props.color }}
                 onChange={(e) => {
                     setInput(e.target.value);
                 }}
             />
             <button
-                style={{ border: 'none', backgroundColor: 'gray', padding: '0.5em' }}
-                onClick={(e) => {
+                style={{ height: '30px', border: 'none', backgroundColor: 'lightgray' }}
+                onClick={() => {
                     props.addTodo(input);
                 }}
             >

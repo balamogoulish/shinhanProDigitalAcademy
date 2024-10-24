@@ -1,10 +1,10 @@
 export default function TodoList(props) {
     return (
-        <div>
+        <div style={{ margin: '0.5em', marginRight: '0' }}>
             {props.inputArr.map((el, id) => {
                 let color = el.color;
                 return (
-                    <div key={id} style={{ display: 'flex' }}>
+                    <div key={id} style={{ display: 'flex', marginBottom: '5px' }}>
                         <p
                             style={{
                                 width: '30em',
@@ -12,9 +12,10 @@ export default function TodoList(props) {
                                 background: color,
                                 textAlign: 'center',
                                 alignContent: 'center',
-                                borderRadius: '1.5em',
-                                margin: '0.5em',
-                                padding: '0.5em',
+                                borderTopLeftRadius: '1.5em',
+                                borderBottomLeftRadius: '1.5em',
+                                margin: '0',
+                                cursor: 'pointer',
                             }}
                             onClick={() => {
                                 props.removeTodo(id);
@@ -26,12 +27,14 @@ export default function TodoList(props) {
                             style={{
                                 width: '3em',
                                 height: 'auto',
-                                background: 'gray',
+                                background: 'pink',
                                 textAlign: 'center',
-                                borderRadius: '1.5em',
                                 border: 'none',
                                 padding: '0.5em',
-                                margin: '0.5em',
+                                color: 'black',
+                                cursor: 'pointer',
+                                borderTopRightRadius: '1.5em',
+                                borderBottomRightRadius: '1.5em',
                             }}
                             onClick={() => {
                                 props.selectTodo(id);

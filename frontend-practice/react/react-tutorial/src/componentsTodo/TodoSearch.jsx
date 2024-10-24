@@ -4,16 +4,16 @@ export default function TodoSearch(props) {
     const [search, setSearch] = useState('');
     return (
         <div>
-            <div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
                 <input
                     type="text"
-                    style={{ border: 'none', backgroundColor: 'lightgray', padding: '0.5em' }}
+                    style={{ height: '30px', border: 'none', backgroundColor: 'whitesmoke' }}
                     onChange={(e) => {
                         setSearch(e.target.value);
                     }}
                 />
                 <button
-                    style={{ border: 'none', backgroundColor: 'gray', padding: '0.5em' }}
+                    style={{ height: '30px', border: 'none', backgroundColor: 'lightgray' }}
                     onClick={() => {
                         props.doSearch(search);
                     }}
