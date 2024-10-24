@@ -1,15 +1,18 @@
 import Colorbar from './Colorbar';
 import TodoInput from './TodoInput';
 import TodoList from './Todolist';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoSearch from './TodoSearch';
 import SearchResult from './SearchResult';
 
 export default function Todo() {
-    const [inputArr, setInputArr] = useState([]);
+    const [inputArr, setInputArr] = useState(JSON.parse(localStorage.getItem('todoArr')));
     const [color, setColor] = useState('white');
     const [colorArr, setColorArr] = useState(['red', 'white', 'blue', 'black']);
     const [searchResultArr, setSearchResultArr] = useState([]);
+    useEffect(() => {
+        localStorage.setItem('todoArr', JSON.stringify(inputArr));
+    }, [inputArr]);
     const addTodo = (text) => {
         setInputArr([...inputArr, { text, color }]);
     };
