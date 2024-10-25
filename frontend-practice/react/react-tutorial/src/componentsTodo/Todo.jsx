@@ -7,6 +7,7 @@ import SearchResult from './SearchResult';
 import TodoEdit from './TodoEdit';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as Hangul from 'hangul-js';
 
 export default function TodoProvider() {
     const [inputArr, setInputArr] = useState(JSON.parse(localStorage.getItem('todoArr')) || []);
@@ -29,6 +30,16 @@ export default function TodoProvider() {
         inputArr.map((el) => {
             if (el.text.includes(data) === true) {
                 temp.push(el);
+            } else {
+                let hangul = Hangul.disassemble(el.text);
+                let cho = '';
+                for (let i = 0; i < hangul.length - 1; i++) {
+                    if (Hangul.isVowel(hangul[i + 1])) cho += hangul[i];
+                }
+                // console.log(cho);
+                if (cho.includes(data) == true) {
+                    temp.push(el);
+                }
             }
         });
         setSearchResultArr(temp);
