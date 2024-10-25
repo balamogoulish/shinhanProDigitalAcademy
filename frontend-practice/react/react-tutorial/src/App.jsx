@@ -5,8 +5,8 @@ import TodoProvider from './componentsTodo/Todo';
 function App() {
     return (
         <>
-            <TodoProvider />
-            {/* <Board /> */}
+            {/* <TodoProvider /> */}
+            <Board />
         </>
     );
 }

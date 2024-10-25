@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 
 export default function PostList(props) {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     return (
         <div
             className="postList-wrap-2"
@@ -8,31 +11,64 @@ export default function PostList(props) {
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: 'whitesmoke',
+                borderRadius: '1em',
                 padding: '2em',
-                borderRadius: '0.5',
-                rowGap: '1em',
+                rowGap: '2em',
             }}
         >
             {props.postArr.map((el) => {
-                const color = el.id == props.selectedId ? 'lightyellow' : 'white';
                 const toggle = el.id == props.selectedId ? true : false;
                 return (
                     <div
                         className="post-item"
                         key={el.id}
-                        style={{ display: 'flex', flexDirection: 'column', rowGap: '0.5em', borderRadius: '0.5' }}
+                        style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', rowGap: '0.5em' }}
                     >
                         <div
-                            style={{ padding: '2em', backgroundColor: color }}
+                            style={{ padding: '2em', backgroundColor: 'white' }}
                             className="post-view"
                             onClick={() => {
                                 props.selectPost(el.id);
                             }}
                         >
                             {toggle ? (
-                                <div>
-                                    <button onClick={() => props.updatePost(el.id)}>UPDATE</button>
-                                    <button onClick={() => props.deletePost(el.id)}>DELETE</button>
+                                <div
+                                    className="edit-delete-post"
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        gap: '0.5em',
+                                        justifyContent: 'right',
+                                    }}
+                                >
+                                    <button
+                                        style={{
+                                            border: 'none',
+                                            padding: '0.5em',
+                                            fontWeight: 'bold',
+                                            backgroundColor: 'lightblue',
+                                            borderRadius: '0.5em',
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => {
+                                            props.updatePost({ title, description });
+                                        }}
+                                    >
+                                        수정하기
+                                    </button>
+                                    <button
+                                        style={{
+                                            border: 'none',
+                                            padding: '0.5em',
+                                            fontWeight: 'bold',
+                                            backgroundColor: 'lightpink',
+                                            borderRadius: '0.5em',
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => props.deletePost(el.id)}
+                                    >
+                                        삭제하기
+                                    </button>
                                 </div>
                             ) : null}
 
@@ -43,17 +79,33 @@ export default function PostList(props) {
                         </div>
                         {toggle ? (
                             <div
-                                className="post-upate"
+                                className="post-update"
                                 style={{
-                                    backgroundColor: 'lightpink',
+                                    backgroundColor: 'lightblue',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     padding: '2em',
                                     rowGap: '0.5em',
                                 }}
                             >
-                                <input className="edit-title" style={{ border: 'none', padding: '0.5em' }} />
-                                <input />
+                                <p style={{ margin: '0', fontWeight: 'bold' }}>Title</p>
+                                <input
+                                    className="edit-title"
+                                    type="text"
+                                    style={{ border: 'none', padding: '0.5em' }}
+                                    onChange={(e) => {
+                                        setTitle(e.target.value);
+                                    }}
+                                />
+                                <p style={{ margin: '0', fontWeight: 'bold' }}>Description</p>
+                                <textarea
+                                    className="edit-description"
+                                    rows={4}
+                                    style={{ border: 'none', padding: '0.5em' }}
+                                    onChange={(e) => {
+                                        setDescription(e.target.value);
+                                    }}
+                                />
                             </div>
                         ) : null}
                     </div>
