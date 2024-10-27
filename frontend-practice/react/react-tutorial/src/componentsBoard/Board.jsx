@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import PostList from './PostList';
 import { v4 as uuid4 } from 'uuid';
 import WritePost from './WritePost';
+import { toast } from 'react-toastify';
 
 export default function Board() {
     const baseUrl = 'https://jsonplaceholder.typicode.com';
@@ -26,6 +27,7 @@ export default function Board() {
     };
     const deletePost = () => {
         setPostArr(postArr.filter((key) => key.id !== selectedId));
+        toast('Delete Successfully!');
     };
     const updatePost = (data) => {
         postArr.map((el, id) => {
@@ -34,9 +36,11 @@ export default function Board() {
             }
         });
         setPostArr([...postArr]);
+        toast('Update Successfully!');
     };
     const addPost = (data) => {
         setPostArr([{ id: uuid4(), userId: -1, body: data.description, title: data.title }, ...postArr]);
+        toast('Post Successfully!');
     };
 
     return (
