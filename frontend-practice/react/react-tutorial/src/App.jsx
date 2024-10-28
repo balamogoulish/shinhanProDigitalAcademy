@@ -1,13 +1,18 @@
 // import 'bootstrap/dist/css/bootstrap.min.css';
+import UserDisplay from './components/UserDisplay';
 import Board from './componentsBoard/board';
 import TodoProvider from './componentsTodo/Todo';
 import { toast, ToastContainer } from 'react-toastify';
+import withUser from './components/withUser';
+
+const UserDisplayWithUser = withUser(UserDisplay);
 
 function App() {
     return (
         <>
             {/* <TodoProvider /> */}
-            <Board />
+            {/* <Board /> */}
+            <UserDisplayWithUser userId={1} />
             <ToastContainer
                 position="top-right" // 알람 위치 지정
                 autoClose={3000} // 자동 off 시간
