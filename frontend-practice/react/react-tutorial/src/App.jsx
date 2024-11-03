@@ -1,18 +1,21 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import UserDisplay from './components/UserDisplay';
-import Board from './componentsBoard/board';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify';
+// import UserDisplay from './components/UserDisplay';
+// import Board from './componentsBoard/board';
+// import withUser from './components/withUser';
+// import BoardMongo from './mongoose/BoardMongo';
+// import Login from './components/Login';
 import TodoProvider from './componentsTodo/Todo';
-import { toast, ToastContainer } from 'react-toastify';
-import withUser from './components/withUser';
-
-const UserDisplayWithUser = withUser(UserDisplay);
+import Login from './componentsTodo/LoginModal';
+// const UserDisplayWithUser = withUser(UserDisplay);
 
 function App() {
     return (
         <>
-            {/* <TodoProvider /> */}
-            {/* <Board /> */}
-            <UserDisplayWithUser userId={1} />
+            <Login />
+            <TodoProvider />
+
+            {/* <BoardMongo /> */}
             <ToastContainer
                 position="top-right" // 알람 위치 지정
                 autoClose={3000} // 자동 off 시간

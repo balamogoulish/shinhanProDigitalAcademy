@@ -7,13 +7,11 @@ export default function StockApp() {
   useEffect(() => {
     async function BringStocks() {
       const response = await axios.get("http://localhost:5173/data/stock.json");
-      const data = await response.data;
-      data.map((el, id) => {
-        setStocksArr([...stocksArr, el]);
-      });
+      const data = response.data;
+      setStocksArr(data)
     }
     BringStocks();
-    console.log(stocksArr);
+    console.log(stocksArr)
   }, []);
 
   return (
@@ -32,14 +30,20 @@ export default function StockApp() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            
+              {stocksArr.map((el, id)=>{
+                return(
+                <tr key={id}>
+                  <td>{el.date}</td>
+                  <td>{el.tradePrice}</td>
+                  <td>{el.openingPrice}</td>
+                  <td>{el.highPrice}</td>
+                  <td>{el.lowPrice}</td>
+                  <td>{el.candleAccTradePrice}</td>
+                </tr>)
+              })}
+              
+            
           </tbody>
         </Table>
       </div>

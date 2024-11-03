@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Colorbar from './Colorbar';
 import TodoInput from './TodoInput';
 import TodoList from './Todolist';
@@ -8,26 +9,37 @@ import TodoEdit from './TodoEdit';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Hangul from 'hangul-js';
+import { fetchTodoList, addTodo as addTodoServer } from '../services/todoService';
 
 export default function TodoProvider() {
-    const [inputArr, setInputArr] = useState(JSON.parse(localStorage.getItem('todoArr')) || []);
+    const [inputArr, setInputArr] = useState([]);
     const [color, setColor] = useState('whitesmoke');
-    const [colorArr, setColorArr] = useState(['whitesmoke']);
+    const [colorArr, setColorArr] = useState(['whitesmoke', 'lightblue', 'lightpink', 'lightyellow']);
     const [searchResultArr, setSearchResultArr] = useState([]);
     const [editToggle, setEditToggle] = useState(false);
     const [selectedId, setSelectedId] = useState(0);
+
     useEffect(() => {
-        localStorage.setItem('todoArr', JSON.stringify(inputArr));
-    }, [inputArr]);
+        fetchTodoList().then((data) => {
+            if (data) {
+                setInputArr(data);
+            }
+        });
+    }, []);
+
     const addTodo = (text) => {
-        setInputArr([...inputArr, { text, color }]);
+        // setInputArr([...inputArr, { text, color }]);
+        addTodoServer({
+            text: text,
+            color: color,
+        }).then((data) => {
+            setInputArr((prev) => [...prev, data]);
+        });
     };
     const selectColor = (color) => {
         setColor(color);
     };
-    useEffect(() => {
-        console.log(selectedId);
-    }, [selectedId]);
+
     const doSearch = (data) => {
         let temp = [];
         inputArr.map((el) => {

@@ -39,7 +39,7 @@ async function main() {
 function writeStockFile(result) {
   const data = JSON.stringify(result, null, 2);
   console.log(data);
-  fs.writeFile("stock.json", data, (err) => {
+  fs.writeFile("./stock.json", data, (err) => {
     if (err) {
       console.error(err);
     }

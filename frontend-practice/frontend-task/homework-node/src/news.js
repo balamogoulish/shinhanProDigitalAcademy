@@ -38,7 +38,7 @@ async function main() {
 function writeNewsFile(result) {
   const data = JSON.stringify(result, null, 2);
   console.log(data);
-  fs.writeFile("news.json", data, (err) => {
+  fs.writeFile("./news.json", data, (err) => {
     if (err) {
       console.error(err);
     }
