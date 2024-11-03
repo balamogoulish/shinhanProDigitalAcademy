@@ -1,8 +1,8 @@
 //Router: 각 URL에 따른 page 컴포넌트 연결
 
 import { createBrowserRouter } from "react-router-dom";
-import MainPage from "../pages/MainPage";
-import SamplePage from "../pages/SamplePage";
+import MainPage from "~/pages/MainPage";
+import SamplePage from "~/pages/SamplePage";
 
 const router = createBrowserRouter([
   {
