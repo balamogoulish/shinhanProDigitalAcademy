@@ -1,10 +1,10 @@
-import React from 'react'
-
+import React from 'react';
+import BoardLayout from '../../components/BoardLayout';
 export default function BoardListPage() {
   return (
-    <div>
-        <h1>BoradList</h1>
-        This is BoardListPage
-    </div>
-  )
+    <>
+      <h1>BoradList</h1>
+      <p>This is Board List</p>
+    </>
+  );
 }

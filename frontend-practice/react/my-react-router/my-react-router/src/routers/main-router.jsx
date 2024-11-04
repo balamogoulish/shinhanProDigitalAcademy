@@ -18,21 +18,28 @@
 // ]);
 // export default router;
 
-import React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import MainPage from "~/routes/page";
-import BoardListPage from "~/routes/board/page";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import MainPage from '~/routes/page';
+import BoardLayout from '~/components/BoardLayout';
+import BoardListPage from '../routes/board/page';
 
 const router = createBrowserRouter([
   {
-    path:'/',
+    path: '/',
     element: <MainPage />,
     index: true,
   },
   {
-    path:'/board',
-    element: <BoardListPage />,
-    index: true,
-  }
-])
+    path: '/board',
+    element: <BoardLayout />,
+    children: [
+      {
+        path: '',
+        index: true,
+        element: <BoardListPage />,
+      },
+    ],
+  },
+]);
 export default router;
