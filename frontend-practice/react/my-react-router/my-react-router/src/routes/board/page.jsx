@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
 import { getBoard } from '../../lib/apis/board';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function BoardListPage() {
   const [boardArr, setBoardArr] = useState([]);
@@ -18,27 +18,11 @@ export default function BoardListPage() {
   return (
     <>
       <h1>My Borad</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>board</th>
-          </tr>
-        </thead>
-        <tbody>
-          {boardArr.map((el, id) => {
-            return (
-              <tr key={id}>
-                <td>
-                  <div>
-                    <h3>{el.title}</h3>
-                    <p>{el.author}</p>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+      <ListGroup>
+        {boardArr.map((el, id) => {
+          return <ListGroup.Item key={id}>{el.title}</ListGroup.Item>;
+        })}
+      </ListGroup>
     </>
   );
 }
