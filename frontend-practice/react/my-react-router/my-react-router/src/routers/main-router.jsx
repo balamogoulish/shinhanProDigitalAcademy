@@ -23,6 +23,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import MainPage from '~/routes/page';
 import BoardLayout from '~/components/BoardLayout';
 import BoardListPage from '../routes/board/page';
+import BoardDetailPage from '../routes/board/detail/page';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path: '',
         index: true,
         element: <BoardListPage />,
+      },
+      {
+        path: ':id',
+        element: <BoardDetailPage />,
       },
     ],
   },

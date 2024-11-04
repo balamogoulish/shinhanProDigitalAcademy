@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 
 export default function StockApp() {
   const [stocksArr, setStocksArr] = useState([]);
+  
   useEffect(() => {
     async function BringStocks() {
       const response = await axios.get("http://localhost:5173/data/stock.json");
@@ -30,7 +31,6 @@ export default function StockApp() {
             </tr>
           </thead>
           <tbody>
-            
               {stocksArr.map((el, id)=>{
                 return(
                 <tr key={id}>
