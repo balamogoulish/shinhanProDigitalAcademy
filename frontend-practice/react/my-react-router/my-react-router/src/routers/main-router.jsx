@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <BoardListPage />,
       },
       {
-        path: ':id',
+        path: ':boardId',
         element: <BoardDetailPage />,
       },
     ],
