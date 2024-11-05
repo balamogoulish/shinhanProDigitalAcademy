@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUpPage() {
   const [signUpData, setSignUpData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+
   const signUpSubmit = async () => {
     const response = await signUp(signUpData.email, signUpData.password);
     if (response._id != null) {
